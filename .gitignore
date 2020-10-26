@@ -3,7 +3,7 @@ env/
 venv/
 .venv
 .venv/
-
+*/migrations/
 __pycache__/
 *.py[cod]
 
@@ -20,3 +20,4 @@ static/
 posts/static/
 
 db.sqlite3
+/api_review/migrations/
