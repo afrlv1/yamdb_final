@@ -1,8 +1,8 @@
 import os
 from datetime import timedelta
-import environ
-env = environ.Env()
-environ.Env.read_env()
+# import environ
+# env = environ.Env()
+# environ.Env.read_env() # импортируем 
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -14,7 +14,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs'
+
+
+
+SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -36,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'api_titles',
     'api_review',
+    
 ]
 
 MIDDLEWARE = [
@@ -73,22 +78,14 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # 'ENGINE': os.environ.get('DB_ENGINE'),
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('POSTGRES_USER'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT'),
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
@@ -137,20 +134,21 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/1/')
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static/'),)
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-        'rest_framework.permissions.AllowAny',
+REST_FRAMEWORK = {        
+        'DEFAULT_PERMISSION_CLASSES': [
+            #'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+            
+            'rest_framework.permissions.AllowAny',
 
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-    ],
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
-}
+        ],
+        'DEFAULT_AUTHENTICATION_CLASSES': [
+            'rest_framework_simplejwt.authentication.JWTAuthentication',
+            'rest_framework.authentication.TokenAuthentication',
+        ],
+        'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+        'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+        'PAGE_SIZE': 10
+    }
 
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=12),
