@@ -2,8 +2,7 @@ import os
 from datetime import timedelta
 import environ
 env = environ.Env()
-environ.Env.read_env() # импортируем
-
+environ.Env.read_env()  # импортируем
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
