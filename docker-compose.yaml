@@ -16,7 +16,7 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     # адрес файла, где хранятся переменные окружения
     env_file:
-      - ./.env
+      - api_yamdb/.env
   web:
     build: .
     restart: always
@@ -27,7 +27,7 @@ services:
     depends_on:
       - db
     env_file:
-      - ./.env
+      - api_yamdb/.env
   nginx: 
     image: nginx:1.19.3
     #container_name: production_nginx
@@ -36,6 +36,6 @@ services:
       - ./static:/static
 
     ports:
-      - "80:80"
+      - "8080:8080"
     depends_on:
       - web
