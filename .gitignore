@@ -18,6 +18,6 @@ __pycache__/
 
 static/
 posts/static/
-
+locset/
 db.sqlite3
 /api_review/migrations/
