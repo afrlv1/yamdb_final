@@ -2,6 +2,7 @@ FROM python:3.8.5
 
 WORKDIR /code
 COPY . /code
+RUN mkdir /static
 RUN pip install -r /code/requirements.txt
 
 RUN python3 manage.py collectstatic --noinput
