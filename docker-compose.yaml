@@ -18,7 +18,8 @@ services:
     env_file:
       - ./.env
   web:
-    build: .
+    build: yamdb_final
+    container_name: web
     restart: always
     ports:
       - "8000:8000"
@@ -29,7 +30,7 @@ services:
       - ./.env
   nginx: 
     image: nginx:1.19.3
-    #container_name: production_nginx
+    container_name: web_nginx
     volumes:
       - ./nginx:/nginx/conf
       - ./static:/static
