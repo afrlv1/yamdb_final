@@ -16,11 +16,10 @@ services:
       - postgres_data:/var/lib/postgresql/data/
     # адрес файла, где хранятся переменные окружения
     env_file:
-      - api_yamdb/.env
+      - .env
   web:
     build: .
     restart: always
-    command: gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
     ports:
       - "8000:8000"
     # "зависит от", 
