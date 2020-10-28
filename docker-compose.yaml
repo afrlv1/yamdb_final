@@ -33,7 +33,6 @@ services:
     volumes:
       - ./nginx:/nginx/conf
       - ./static:/static
-
     ports:
       - "80:80"
     depends_on:
