@@ -14,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
+SECRET_KEY = 'p&l%385148kslhtyn^##a1)ilz@4zqj=rq&agdol^##zgl9(vs'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -36,7 +36,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'api_titles',
     'api_review',
-    'api_yamdb',
 ]
 
 MIDDLEWARE = [
@@ -74,9 +73,17 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+        # 'ENGINE': os.environ.get('DB_ENGINE'),
         'NAME': os.environ.get('DB_NAME'),
         'USER': os.environ.get('POSTGRES_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
@@ -84,6 +91,7 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT'),
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

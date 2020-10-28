@@ -1,11 +1,6 @@
 # api_yamdb
 
 
-
-
-
-
-
 [![Yamdb-app workflow](https://github.com/afrlv1/yamdb_final/workflows/Yamdb-app_workflow/badge.svg)](https://github.com/afrlv1/yamdb_final/actions)
 
 Проект YaMDb собирает отзывы пользователей на произведения. Произведения делятся на категории: «Книги», «Фильмы», «Музыка».
@@ -64,13 +59,16 @@ YaMDB отправляет письмо с кодом подтверждения
 python manage.py createsuperuser  #Создание супер пользователя 
 
 #Выполнение миграций
+
 python manage.py makemigrations
 python manage.py migrate  
 
 #Установка всех пакетов
+
 pip install -r requirements.txt 
 
 #Запуск сервера
+
 python manage.py runserver  
 
 Либо запуск через Docker
