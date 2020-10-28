@@ -48,10 +48,11 @@ jobs:
     - name: executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_KEY }}
-        passphrase: ${{ secrets.PASSPHRASE }} # если ваш ssh-ключ c паролем
+        host: ${{ secrets.DEPLOY_SERVER_HOST }}
+        port: ${{ secrets.DEPLOY_SERVER_PORT }}
+        username: ${{ secrets.DEPLOY_SERVER_USERNAME }}
+        key: ${{ secrets.DEPLOY_SERVER_KEY }}
+        passphrase: ${{ secrets.DEPLOY_SERVER_PASSPHRASE }} # если ваш ssh-ключ c паролем
         script: |
           sudo docker pull afrlv/yamdb_final:v2
           sudo docker stop $(sudo docker ps -a -q)
