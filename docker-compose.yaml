@@ -18,7 +18,7 @@ services:
     env_file:
       - ./.env
   web:
-    build: yamdb_final
+    build: .
     container_name: web
     restart: always
     ports:
